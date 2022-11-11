@@ -93,7 +93,7 @@ void autonomous(void) {
   // auton::Half2();
 
   auton::Half1();
-  //auton::Half1Discs();
+  auton::Half1Discs();
 }
 
 /*---------------------------------------------------------------------------*/

@@ -31,23 +31,16 @@ void spinInch(double inches){ // spins clockwise for how many inches
 }
 
 void auton::Half1Discs(){
+  spinInch(14);
   driveInch(-60);
-  spinInch(-1.6);
-  spinFly(90);
+  spinInch(13);
+  spinFly(100);
   wait(2300,msec);
-  int oldFly=0;
-  while(MotorF2.velocity(percent)>90*0.8 && MotorF2.velocity(percent)>oldFly){
-    oldFly=MotorF2.velocity(percent);
-  }
   fireRing();
-  spinFly(90);
-  wait(1000,msec);
-  while(MotorF2.velocity(percent)>90*0.8 && MotorF2.velocity(percent)>oldFly){
-    oldFly=MotorF2.velocity(percent);
-  }
+  wait(500,msec);
   fireRing();
   fireRing();
-  wait(300,msec);
+  wait(100,msec);
   spinFly(0);
 }
 
@@ -75,31 +68,4 @@ void auton::Half2(){
   wait(100,msec);
   
   Half1();
-  
-
-  // discs
-  driveInch(-70);
-  spinInch(3.6);
-  spinInch(25);
-
-  spinFly(90);
-  wait(2300,msec);
-  int oldFly;
-  while(MotorF2.velocity(percent)>90*0.8 && MotorF2.velocity(percent)>oldFly){
-    oldFly=MotorF2.velocity(percent);
-  };
-  fireRing();
-  spinFly(90);
-  wait(1000,msec);
-  while(MotorF2.velocity(percent)>90*0.8 && MotorF2.velocity(percent)>oldFly){
-    oldFly=MotorF2.velocity(percent);
-  };
-  fireRing();
-  fireRing();
-  wait(300,msec);
-  spinFly(0);
-
-  // reset (for debugging)
-  spinInch(-3);
-  driveInch(50);
 }

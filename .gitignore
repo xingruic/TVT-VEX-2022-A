@@ -31,8 +31,7 @@
 *.out
 *.app
 
-
-
-*.bin
-*.elf
-*.map
+compile_commands.json
+build/TVT1.bin
+build/TVT1.elf
+build/TVT1.map

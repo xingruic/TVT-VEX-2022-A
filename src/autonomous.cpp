@@ -31,6 +31,7 @@ void spinInch(double inches){ // spins clockwise for how many inches
 }
 
 void auton::Half1Discs(){
+  driveInch(-10);
   spinInch(14);
   driveInch(-60);
   spinInch(13);

@@ -5,14 +5,14 @@
 
 using namespace vex;
 
-void _drive(int lS, int rS){
+void _drive(int lS, int rS){ // spins the drivetrain motors at (leftSpeed, rightSpeed)
   MotorLF.spin(reverse,lS,percent);
   MotorLB.spin(forward,lS,percent);
   MotorRF.spin(reverse,rS,percent);
   MotorRB.spin(forward,rS,percent);
 }
 
-void driveInch(double inches){
+void driveInch(double inches){ // drives for mow many inches
   double pi = 3.1415926;
   int D = 4;
   MotorLF.spinFor(reverse, inches/pi/D, rev, false);

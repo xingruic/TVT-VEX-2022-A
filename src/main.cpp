@@ -7,6 +7,38 @@
 // MotorRF              motor         3               
 // MotorRB              motor         4               
 // MotorIntk            motor         5               
+// MotorF1              motor         17              
+// MotorF2              motor         18              
+// MotorOut             motor         8               
+// Pneu1                digital_out   A               
+// Pneu2                digital_out   B               
+// Pneu3                digital_out   C               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// MotorLF              motor         11              
+// MotorLB              motor         20              
+// MotorRF              motor         3               
+// MotorRB              motor         4               
+// MotorIntk            motor         5               
+// MotorF1              motor         17              
+// MotorF2              motor         7               
+// MotorOut             motor         8               
+// Pneu1                digital_out   A               
+// Pneu2                digital_out   B               
+// Pneu3                digital_out   C               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// MotorLF              motor         11              
+// MotorLB              motor         20              
+// MotorRF              motor         3               
+// MotorRB              motor         4               
+// MotorIntk            motor         5               
 // MotorF1              motor         6               
 // MotorF2              motor         7               
 // MotorOut             motor         8               
@@ -110,7 +142,7 @@ void autonomous(void) {
   // auton::Half2();
 
   auton::Half1();
-  auton::Half1Discs();
+  // auton::Half1Discs();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -197,7 +229,7 @@ void usercontrol(void) {
     else spinIntk(0);
 
     if(FlyGlobalBool){
-      spinFly(100);
+      spinFly(80);
     }else{
       spinFly(0);
     }

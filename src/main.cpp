@@ -202,7 +202,7 @@ void usercontrol(void) {
       spinFly(0);
     }
 
-    if(Controller1.ButtonRight.pressing()){
+    if(Controller1.ButtonRight.pressing() && Controller1.ButtonY.pressing()){
       Pneu1.set(false);
       Pneu2.set(false);
       Pneu3.set(false);

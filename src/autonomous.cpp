@@ -31,14 +31,15 @@ void spinInch(double inches){ // spins clockwise for how many inches
 }
 
 void auton::Half1Discs(){
-  driveInch(-10);
-  spinInch(14);
+  driveInch(-5);
+  spinInch(8);
   driveInch(-60);
-  spinInch(13);
+  spinInch(12);
+  driveInch(13);
   spinFly(100);
-  wait(2300,msec);
+  wait(3300,msec);
   fireRing();
-  wait(500,msec);
+  wait(1300,msec);
   fireRing();
   fireRing();
   wait(100,msec);

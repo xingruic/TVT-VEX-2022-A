@@ -3,7 +3,7 @@
 
 using namespace vex;
 
-int oldFly;
+double maxFly=0;
 
 void spinFly(int speed){
   MotorF1.spin(forward, speed, percent);
@@ -13,16 +13,16 @@ void spinFly(int speed){
   // }else{
   //   Controller1.rumble(" ");
   // }
-  oldFly=MotorF2.velocity(percent);
-  Brain.Screen.printAt(30,30,"flywheel speed: %.2f                  ", MotorF2.velocity(percent));
+  maxFly=maxFly>MotorF2.velocity(percent)?maxFly:MotorF2.velocity(percent);
+  Brain.Screen.printAt(30,30,"maximum flywheel speed: %.2f                  ", maxFly);
 }
 
 // fire ring
 void fireRing(){
   MotorOut.spin(forward, 100, percent);
-  wait(250, msec);
+  wait(275, msec);
   MotorOut.spin(reverse, 100, percent);
-  wait(300, msec);
+  wait(350, msec);
   MotorOut.spin(forward, 0, percent);
 }
 

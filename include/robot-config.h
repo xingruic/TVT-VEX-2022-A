@@ -14,6 +14,7 @@ extern motor MotorF2;
 extern motor MotorOut;
 extern digital_out Pneu1;
 extern digital_out Pneu2;
+extern digital_out Pneu3;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

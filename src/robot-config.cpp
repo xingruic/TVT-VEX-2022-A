@@ -19,6 +19,7 @@ motor MotorF2 = motor(PORT7, ratio18_1, true);
 motor MotorOut = motor(PORT8, ratio18_1, false);
 digital_out Pneu1 = digital_out(Brain.ThreeWirePort.A);
 digital_out Pneu2 = digital_out(Brain.ThreeWirePort.B);
+digital_out Pneu3 = digital_out(Brain.ThreeWirePort.C);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

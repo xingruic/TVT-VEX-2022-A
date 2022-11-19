@@ -1,3 +1,19 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// MotorLF              motor         11              
+// MotorLB              motor         20              
+// MotorRF              motor         3               
+// MotorRB              motor         4               
+// MotorIntk            motor         5               
+// MotorF1              motor         6               
+// MotorF2              motor         7               
+// MotorOut             motor         8               
+// Pneu1                digital_out   A               
+// Pneu2                digital_out   B               
+// Pneu3                digital_out   C               
+// ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -66,6 +82,7 @@ void pre_auton(void) {
 
   Pneu1.set(true);
   Pneu2.set(true);
+  Pneu3.set(true);
 
   MotorOut.setBrake(brake);
 
@@ -180,12 +197,16 @@ void usercontrol(void) {
     else spinIntk(0);
 
     if(FlyGlobalBool){
-      spinFly(75);
+      spinFly(100);
     }else{
       spinFly(0);
     }
 
-    if(Controller1.ButtonRight.pressing()) Pneu1.set(false);
+    if(Controller1.ButtonRight.pressing()){
+      Pneu1.set(false);
+      Pneu2.set(false);
+      Pneu3.set(false);
+    }
 
     wait(30, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.

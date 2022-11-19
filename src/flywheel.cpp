@@ -19,10 +19,10 @@ void spinFly(int speed){
 
 // fire ring
 void fireRing(){
-  MotorOut.spin(forward, 75, percent);
+  MotorOut.spin(forward, 100, percent);
+  wait(250, msec);
+  MotorOut.spin(reverse, 100, percent);
   wait(300, msec);
-  MotorOut.spin(reverse, 75, percent);
-  wait(400, msec);
   MotorOut.spin(forward, 0, percent);
 }
 

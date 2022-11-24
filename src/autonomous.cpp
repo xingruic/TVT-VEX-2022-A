@@ -34,8 +34,8 @@ void auton::Half1Discs(){
   driveInch(-5);
   spinInch(8);
   driveInch(-60);
-  spinInch(12);
-  driveInch(13);
+  spinInch(12.1);
+  driveInch(8);
   spinFly(100);
   wait(3300,msec);
   fireRing();
@@ -62,12 +62,17 @@ void auton::Half1(){
 
 void auton::Half2(){
   // roller
-  driveInch(-33);
-  spinInch(-12);
-  _drive(70,70);
-  wait(300,msec);
-  _drive(0,0);
-  wait(100,msec);
+  driveInch(28);
+  spinInch(13.3);
   
-  Half1();
+  // Half1();
+  // _drive(20,20);
+  // wait(200, msec);
+  // _drive(5, 5);
+  // spinIntk(-40);
+  // wait(400, msec);
+  // spinIntk(0);
+  // _drive(0,0);
+
+
 }

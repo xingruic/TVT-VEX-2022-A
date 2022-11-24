@@ -107,10 +107,10 @@ void pre_auton(void) {
 
 void autonomous(void) {
 
-  // auton::Half2();
+  auton::Half2();
 
-  auton::Half1();
-  auton::Half1Discs();
+  // auton::Half1();
+  // auton::Half1Discs();
 }
 
 /*---------------------------------------------------------------------------*/
@@ -197,7 +197,7 @@ void usercontrol(void) {
     else spinIntk(0);
 
     if(FlyGlobalBool){
-      spinFly(100);
+      spinFly(75);
     }else{
       spinFly(0);
     }

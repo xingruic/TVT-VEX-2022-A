@@ -197,7 +197,7 @@ void usercontrol(void) {
     else spinIntk(0);
 
     if(FlyGlobalBool){
-      spinFly(75);
+      spinFly(75); //flywheel speed
     }else{
       spinFly(0);
     }

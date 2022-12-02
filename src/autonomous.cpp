@@ -30,7 +30,7 @@ void spinInch(double inches){ // spins clockwise for how many inches
   MotorRB.spinFor(reverse, inches/pi/D, rev, true);
 }
 
-void auton::Half1Discs(){
+void auton::Half1Discs(){ //left side without roller
   driveInch(-5);
   spinInch(8);
   driveInch(-60);
@@ -61,11 +61,23 @@ void auton::Half1(){
 }
 
 void auton::Half2(){
-  // roller
-  driveInch(28);
-  spinInch(13.3);
-  
-  // Half1();
+  // right side
+  driveInch(26);
+  spinInch(13.2);
+  driveInch(3);
+  Half1(); //roller
+  spinInch(19.8); //25.8 for 180
+  driveInch(60); //drive to the center
+  spinInch(14.7); //turn 
+  // driveInch(20);
+  spinFly(100);
+  wait(3500,msec);
+  fireRing();
+  wait(1500,msec);
+  fireRing();
+  wait(400, msec);
+  spinFly(0);
+
   // _drive(20,20);
   // wait(200, msec);
   // _drive(5, 5);

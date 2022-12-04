@@ -32,17 +32,16 @@ void spinInch(double inches){ // spins clockwise for how many inches
 
 void auton::Half1Discs(){ //left side without roller
   driveInch(-5);
-  spinInch(8);
+  spinInch(7);
   driveInch(-60);
-  spinInch(12.1);
-  driveInch(8);
+  spinInch(12); 
+  driveInch(4);
   spinFly(100);
-  wait(3300,msec);
+  wait(3600,msec);
   fireRing();
-  wait(1300,msec);
+  wait(2000,msec);
   fireRing();
-  fireRing();
-  wait(100,msec);
+  wait(1500,msec);
   spinFly(0);
 }
 
@@ -62,20 +61,21 @@ void auton::Half1(){
 
 void auton::Half2(){
   // right side
-  driveInch(26);
-  spinInch(13.2);
-  driveInch(3);
+  driveInch(25);
+  spinInch(12);
+  driveInch(1);
   Half1(); //roller
-  spinInch(19.8); //25.8 for 180
-  driveInch(60); //drive to the center
-  spinInch(14.7); //turn 
-  // driveInch(20);
-  spinFly(100);
-  wait(3500,msec);
+  driveInch(-2);
+  spinInch(17); //25.8 for 180 17.5 along the line
+  driveInch(38); //drive to the center
+  spinInch(9); //turn 
+  driveInch(3);
+  spinFly(85);
+  wait(2800,msec);
   fireRing();
-  wait(1500,msec);
+  wait(1600,msec);
   fireRing();
-  wait(400, msec);
+  wait(1500, msec);
   spinFly(0);
 
   // _drive(20,20);

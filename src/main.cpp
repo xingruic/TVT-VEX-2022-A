@@ -74,6 +74,10 @@ void drive(int lS, int rS){
   MotorLB.spin(forward,lS,percent);
   MotorRF.spin(reverse,rS,percent);
   MotorRB.spin(forward,rS,percent);
+  MotorLB.setBrake(brake);
+  MotorLF.setBrake(brake);
+  MotorRB.setBrake(brake);
+  MotorRF.setBrake(brake);
 }
 
 void pre_auton(void) {
@@ -107,10 +111,10 @@ void pre_auton(void) {
 
 void autonomous(void) {
 
-  auton::Half2();
+  // auton::Half2();// right side
 
-  // auton::Half1();
-  // auton::Half1Discs();
+  auton::Half1();
+  auton::Half1Discs(); // left side
 }
 
 /*---------------------------------------------------------------------------*/

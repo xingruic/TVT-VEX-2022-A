@@ -203,7 +203,7 @@ void usercontrol(void) {
 
 
     if(Controller1.ButtonUp.pressing()){
-      spinFly(85); //flywheel speed
+      spinFly(65); //flywheel speed
     }
     else if(Controller1.ButtonDown.pressing()){
       spinFly(0);

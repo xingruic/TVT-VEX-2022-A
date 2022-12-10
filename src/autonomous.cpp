@@ -63,7 +63,7 @@ void auton::Half2(){
   // right side
   driveInch(25);
   spinInch(12);
-  driveInch(1);
+  driveInch(3);
   Half1(); //roller
   driveInch(-2);
   spinInch(17); //25.8 for 180 17.5 along the line
@@ -77,6 +77,14 @@ void auton::Half2(){
   fireRing();
   wait(1500, msec);
   spinFly(0);
+
+
+
+
+
+
+
+
 
   // _drive(20,20);
   // wait(200, msec);

@@ -111,10 +111,11 @@ void pre_auton(void) {
 
 void autonomous(void) {
 
-  // auton::Half2();// right side
+  auton::Half2();// right side
 
-  auton::Half1();
-  auton::Half1Discs(); // left side
+
+  // auton::Half1();
+  // auton::Half1Discs(); // left side
 }
 
 /*---------------------------------------------------------------------------*/
@@ -200,9 +201,11 @@ void usercontrol(void) {
     else if(Controller1.ButtonL2.pressing()) spinIntk(-70);
     else spinIntk(0);
 
-    if(FlyGlobalBool){
-      spinFly(75); //flywheel speed
-    }else{
+
+    if(Controller1.ButtonUp.pressing()){
+      spinFly(85); //flywheel speed
+    }
+    else if(Controller1.ButtonDown.pressing()){
       spinFly(0);
     }
 

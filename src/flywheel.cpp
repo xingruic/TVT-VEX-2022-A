@@ -5,7 +5,24 @@ using namespace vex;
 
 double maxFly=0;
 
+int FSpeed=0;
+int prev_error=-1;
+int tbh=0;
+const double gain=0.1;
+int getFlywheelSpeed(int speed){
+  FSpeed=MotorF2.velocity(percent);
+  int error=speed-FSpeed;
+  int output=FSpeed+error*gain;
+  if(signbit(error)!=signbit(prev_error)){
+    output=0.5*(output+tbh);
+    tbh=output;
+    prev_error=error;
+  }
+  return output;
+}
+
 void spinFly(int speed){
+  speed=getFlywheelSpeed(speed);
   MotorF1.spin(forward, speed, percent);
   MotorF2.spin(forward, speed, percent);
   // if(speed>0 && MotorF2.velocity(percent)>speed*0.8 && MotorF2.velocity(percent)>oldFly){

@@ -1,18 +1,18 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// MotorLF              motor         11              
-// MotorLB              motor         20              
-// MotorRF              motor         3               
-// MotorRB              motor         4               
-// MotorIntk            motor         5               
-// MotorF1              motor         6               
-// MotorF2              motor         7               
-// MotorOut             motor         8               
-// Pneu1                digital_out   A               
-// Pneu2                digital_out   B               
-// Pneu3                digital_out   C               
+// Controller1          controller
+// MotorLF              motor         3
+// MotorLB              motor         4
+// MotorRF              motor         11
+// MotorRB              motor         20
+// MotorIntk            motor         5
+// MotorF1              motor         6
+// MotorF2              motor         7
+// MotorOut             motor         8
+// Pneu1                digital_out   A
+// Pneu2                digital_out   B
+// Pneu3                digital_out   C
 // ---- END VEXCODE CONFIGURED DEVICES ----
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
@@ -26,24 +26,25 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// MotorLF              motor         11              
-// MotorLB              motor         20              
-// MotorRF              motor         3               
-// MotorRB              motor         4               
-// MotorIntk            motor         5               
-// MotorF1              motor         6               
-// MotorF2              motor         7               
-// MotorOut             motor         8               
-// Pneu1                digital_out   A               
-// Pneu2                digital_out   B               
+// Controller1          controller
+// MotorLF              motor         3
+// MotorLB              motor         4
+// MotorRF              motor         11
+// MotorRB              motor         20
+// MotorIntk            motor         5
+// MotorF1              motor         6
+// MotorF2              motor         7
+// MotorOut             motor         8
+// Pneu1                digital_out   A
+// Pneu2                digital_out   B
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
-#include "vex.h"
-#include "flywheel.h"
 #include "autonomous.h"
-#include "intake.h"
 #include "expansion.h"
+#include "flywheel.h"
+#include "intake.h"
+#include "vex.h"
+
 
 using namespace vex;
 
@@ -62,18 +63,16 @@ competition Competition;
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
-bool FlyGlobalBool=0;
+bool FlyGlobalBool = 0;
 
-void toggleFly(){
-  FlyGlobalBool=!FlyGlobalBool;
-}
+void toggleFly() { FlyGlobalBool = !FlyGlobalBool; }
 
 // give lSpeed and rSpeed in percent
-void drive(int lS, int rS){
-  MotorLF.spin(reverse,lS,percent);
-  MotorLB.spin(forward,lS,percent);
-  MotorRF.spin(reverse,rS,percent);
-  MotorRB.spin(forward,rS,percent);
+void drive(int lS, int rS) {
+  MotorLF.spin(reverse, lS, percent);
+  MotorLB.spin(forward, lS, percent);
+  MotorRF.spin(reverse, rS, percent);
+  MotorRB.spin(forward, rS, percent);
   MotorLB.setBrake(brake);
   MotorLF.setBrake(brake);
   MotorRB.setBrake(brake);
@@ -89,6 +88,8 @@ void pre_auton(void) {
   Pneu3.set(true);
 
   MotorOut.setBrake(brake);
+  MotorF1.setBrake(coast);
+  MotorF2.setBrake(coast);
 
   MotorLF.setVelocity(50, percent);
   MotorLB.setVelocity(50, percent);
@@ -111,8 +112,7 @@ void pre_auton(void) {
 
 void autonomous(void) {
 
-  auton::Half2();// right side
-
+  auton::Half2(); // right side
 
   // auton::Half1();
   // auton::Half1Discs(); // left side
@@ -128,57 +128,82 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-void singleRightDrive(){
+void singleRightDrive() {
   int LR = Controller1.Axis1.position();
   int FB = Controller1.Axis2.position();
-  double lD = LR*0.7;
-  double rD = -LR*0.7;
-  lD+=FB;
-  rD+=FB;
-  if(lD>100) lD=100;
-  if(rD>100) rD=100;
-  if(lD<-100) lD=-100;
-  if(rD<-100) rD=-100;
+  double lD = LR * 0.7;
+  double rD = -LR * 0.7;
+  lD += FB;
+  rD += FB;
+  if (lD > 100)
+    lD = 100;
+  if (rD > 100)
+    rD = 100;
+  if (lD < -100)
+    lD = -100;
+  if (rD < -100)
+    rD = -100;
 
   drive(lD, rD);
 }
 
-void singleLeftDrive(){
+void singleLeftDrive() {
   int LR = Controller1.Axis4.position();
   int FB = Controller1.Axis3.position();
-  double lD = LR*0.7;
-  double rD = -LR*0.7;
-  lD+=FB;
-  rD+=FB;
-  if(lD>100) lD=100;
-  if(rD>100) rD=100;
-  if(lD<-100) lD=-100;
-  if(rD<-100) rD=-100;
+  double lD = LR * 0.7;
+  double rD = -LR * 0.7;
+  lD += FB;
+  rD += FB;
+  if (lD > 100)
+    lD = 100;
+  if (rD > 100)
+    rD = 100;
+  if (lD < -100)
+    lD = -100;
+  if (rD < -100)
+    rD = -100;
 
   drive(lD, rD);
 }
 
-void splitDrive(){
+void splitDrive() {
   int LR = Controller1.Axis1.position();
-  int FB = Controller1.Axis3.position();
-  double lD = LR*0.7;
-  double rD = -LR*0.7;
-  lD+=FB;
-  rD+=FB;
-  if(lD>100) lD=100;
-  if(rD>100) rD=100;
-  if(lD<-100) lD=-100;
-  if(rD<-100) rD=-100;
+  float FB = Controller1.Axis3.position() * 0.9;
+  double lD = LR * 0.7;
+  double rD = -LR * 0.7;
+  lD += FB;
+  rD += FB;
+  if (lD > 100)
+    lD = 100;
+  if (rD > 100)
+    rD = 100;
+  if (lD < -100)
+    lD = -100;
+  if (rD < -100)
+    rD = -100;
 
   drive(lD, rD);
 }
 
-void tankDrive(){
-  drive(Controller1.Axis3.position(),Controller1.Axis2.position());
+int lOld = 0, rOld = 0;
+void tankDrive() {
+  int l = Controller1.Axis3.position();
+  int r = Controller1.Axis2.position();
+  if (lOld > 0 && l < lOld)
+    l = fmax(lOld - 15, l);
+  else if (lOld < 0 && l > lOld)
+    l = fmin(lOld + 15, l);
+  if (rOld > 0 && r < rOld)
+    r = fmax(rOld - 15, r);
+  else if (rOld < 0 && r > rOld)
+    r = fmin(rOld + 15, r);
+  lOld=l;
+  rOld=r;
+  drive(l, r);
 }
 
 void usercontrol(void) {
-  
+  bool spinningFly = 0;
   // User control code here, inside the loop
 
   Controller1.ButtonR1.pressed(fireRing);
@@ -195,21 +220,27 @@ void usercontrol(void) {
     // update your motors, etc.
     // ........................................................................
 
-    tankDrive();
-    
-    if(Controller1.ButtonL1.pressing()) spinIntk(100);
-    else if(Controller1.ButtonL2.pressing()) spinIntk(-70);
-    else spinIntk(0);
+    splitDrive();
 
+    if (Controller1.ButtonL1.pressing())
+      spinIntk(100);
+    else if (Controller1.ButtonL2.pressing())
+      spinIntk(-70);
+    else
+      spinIntk(0);
 
-    if(Controller1.ButtonUp.pressing()){
-      spinFly(65); //flywheel speed
+    if (Controller1.ButtonUp.pressing()) {
+      spinningFly = 1;
+    } else if (Controller1.ButtonDown.pressing()) {
+      spinningFly = 0;
     }
-    else if(Controller1.ButtonDown.pressing()){
+    if (spinningFly) {
+      spinFly(77);
+    } else {
       spinFly(0);
     }
 
-    if(Controller1.ButtonRight.pressing() && Controller1.ButtonY.pressing()){
+    if (Controller1.ButtonRight.pressing() && Controller1.ButtonY.pressing()) {
       Pneu1.set(false);
       Pneu2.set(false);
       Pneu3.set(false);

@@ -20,7 +20,16 @@ int getFlywheelSpeed(int speed){
   }
   return output;
 }
-
+void spinFlyForMsec(int speed,int msecs,bool stopAfterwards){
+  for(int i=0; i<msecs/20; i++){
+    spinFly(speed);
+    wait(20,msec);
+  }
+  if(stopAfterwards){
+    MotorF1.spin(forward, 0, percent);
+    MotorF2.spin(forward, 0, percent);
+  }
+}
 void spinFly(int speed){
   speed=getFlywheelSpeed(speed);
   MotorF1.spin(forward, speed, percent);

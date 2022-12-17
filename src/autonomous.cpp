@@ -13,12 +13,25 @@ void _drive(int lS, int rS){
 }
 
 void driveInch(double inches){
-  double pi = 3.1415926;
-  int D = 4;
-  MotorLF.spinFor(reverse, inches/pi/D, rev, false);
-  MotorLB.spinFor(forward, inches/pi/D, rev, false);
-  MotorRF.spinFor(reverse, inches/pi/D, rev, false);
-  MotorRB.spinFor(forward, inches/pi/D, rev, true);
+  double x=0;
+  int speed;
+  const double kp=7;
+  const double margin=0.3;
+  double error=inches-x;
+  MotorRB.setRotation(0, rev);
+  while(fabs(error)>margin){
+    if(kp*error>50){
+      speed=50;
+    }else if(kp*error<-50){
+      speed=-50;
+    }else{
+      speed=kp*error;
+    }
+    _drive(speed,speed);
+    x=MotorRB.position(rev)*3.14159*4;
+    error=inches-x;
+  }
+  _drive(0,0);
 }
 
 void spinInch(double inches){ // spins clockwise for how many inches
@@ -31,25 +44,25 @@ void spinInch(double inches){ // spins clockwise for how many inches
 }
 
 void auton::Half1Discs(){ //left side without roller
-  driveInch(-5);
-  spinInch(7);
-  driveInch(-60);
-  spinInch(12); 
-  driveInch(4);
-  spinFly(100);
-  wait(3600,msec);
+  driveInch(5);
+  spinInch(-1.1);
+  spinFlyForMsec(91, 4000);
   fireRing();
-  wait(2000,msec);
+  spinFlyForMsec(93, 3000);
   fireRing();
-  wait(1500,msec);
-  spinFly(0);
+  wait(500,msec);
+  fireRing();
+  wait(500,msec);
+  fireRing();
+  wait(500,msec);
+  spinFlyForMsec(0,0,1);
 }
 
 void auton::Half1(){
   // roller
-  _drive(20,20);
+  _drive(-20,-20);
   wait(200, msec);
-  _drive(5, 5);
+  _drive(-5, -5);
   spinIntk(-40);
   wait(400, msec);
   spinIntk(0);

@@ -112,10 +112,10 @@ void pre_auton(void) {
 
 void autonomous(void) {
 
-  auton::Half2(); // right side
+  // auton::Half2(); // right side
 
-  // auton::Half1();
-  // auton::Half1Discs(); // left side
+  auton::Half1();
+  auton::Half1Discs(); // left side
 }
 
 /*---------------------------------------------------------------------------*/

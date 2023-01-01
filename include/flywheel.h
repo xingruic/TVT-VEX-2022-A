@@ -2,8 +2,8 @@
 #define FLYWHEEL_H
 
 void spinFly(int speed);
-double getFlywheelSpeed(double target, double &OldError, double &TBHval, double &FWDrive);
 void fireRing();
 void tripleFire();
+void spinFlyForMsec(int speed,int msecs,bool stopAfterwards=false);
 
 #endif
